@@ -1,0 +1,15 @@
+.input-group {
+  @apply mx-2 flex flex-col items-start gap-1;
+}
+.input-label {
+  @apply tracking-wider;
+}
+.input-control {
+  @apply mx-1 w-full max-w-md rounded focus:ring focus:ring-blue-500 focus:ring-offset-2;
+}
+.btn.btn-manual {
+  @apply font-openSans transform rounded bg-blue-600 py-2 px-7 text-xl text-white shadow-md  transition hover:translate-y-1 hover:bg-blue-700;
+}
+.btn.btn-cancel {
+  @apply font-openSans transform rounded bg-red-600 py-2 px-5 text-xl text-white shadow-md  transition hover:translate-y-1 hover:bg-red-700;
+}
