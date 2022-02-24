@@ -2,6 +2,11 @@ import React from "react";
 import { HiOutlineBell } from "react-icons/hi";
 import TaskCompleted from "./Completed/TaskCompleted";
 function Right({ data, onUndo, onDeleteCompleted }) {
+  const [dataLen, setDataLen] = React.useState(0);
+
+  const getLength = (len) => {
+    setDataLen(len);
+  };
   return (
     <aside className="font-poppins hidden max-h-screen max-w-md overflow-y-auto rounded-tr-md bg-white shadow-md shadow-indigo-50 lg:block lg:w-80 xl:w-full">
       {/* ! user profile */}
@@ -9,7 +14,7 @@ function Right({ data, onUndo, onDeleteCompleted }) {
         <div className="flex w-full items-center justify-between px-3 py-4 shadow-xl shadow-gray-100">
           <div className="relative">
             <span className=" absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-rose-500 text-xs text-white">
-              16
+              {dataLen}
             </span>
             <HiOutlineBell className="h-7 w-7 text-yellow-600" />
           </div>
@@ -27,6 +32,7 @@ function Right({ data, onUndo, onDeleteCompleted }) {
         tasks={data}
         id={data.id}
         onUndo={onUndo}
+        getLength={getLength}
         onDeleteTask={onDeleteCompleted}
       />
     </aside>

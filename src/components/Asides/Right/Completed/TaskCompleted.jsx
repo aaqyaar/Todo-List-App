@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { HiOutlineClipboardCheck } from "react-icons/hi";
 import TaskComplete from "./TaskComplete";
 import Empty from "../../../Content/Tasks/Empty";
@@ -7,6 +7,7 @@ function TaskCompleted(props) {
   const data = props.tasks.filter(
     (task) => task.status.toLowerCase() == "completed"
   );
+
   const [category, setCategory] = useState("All");
   const [date, setDate] = useState("");
 
@@ -24,6 +25,7 @@ function TaskCompleted(props) {
   const filteredTasks = filterByCategory.filter((task) =>
     date === "" ? task : date === task.date
   );
+  props.getLength(filteredTasks.length);
 
   const isUndoTask = (id) => {
     props.onUndo(id);
@@ -43,7 +45,7 @@ function TaskCompleted(props) {
         </div>
 
         <div className="mx-2 mt-2 flex items-center gap-6">
-          <h1 className="text-xl font-semibold tracking-wide text-gray-600">
+          <h1 className="text-lg font-semibold tracking-wide text-gray-600">
             Filter By
           </h1>
 
